@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utsav Sharma | 3D Spatial Portfolio</title>
+    <title>Utsav Sharma</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -207,26 +207,57 @@
 
         <!-- Navbar -->
         <nav
-            class="fixed top-0 w-full p-6 z-50 flex justify-between items-center bg-slate-900/50 backdrop-blur-md border-b border-white/10 pointer-events-auto">
-            <div class="text-2xl font-black tracking-widest uppercase interactive-el">Utsav Sharma<span
-                    class="text-brand">.</span></div>
-            <div class="hidden md:flex gap-6 font-mono text-xs tracking-widest">
-                <a href="#hero" class="hover:text-brand transition-colors interactive-el">01. INITIATE</a>
-                <a href="#about" class="hover:text-brand transition-colors interactive-el">02. ABOUT_ME</a>
-                <a href="#skills" class="hover:text-brand transition-colors interactive-el">03. CAPABILITIES</a>
-                <a href="#projects" class="hover:text-brand transition-colors interactive-el">04. PROJECTS</a>
+            class="fixed top-0 w-full p-4 md:p-6 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10 backdrop-blur-md">
+
+            <div class="flex justify-between items-center">
+
+                <!-- Logo -->
+                <div class="text-xl md:text-2xl font-black tracking-widest uppercase">
+                    Utsav Sharma<span class="text-brand">.</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex gap-6 font-mono text-xs tracking-widest">
+                    <a href="#hero" class="hover:text-brand">01. INITIATE</a>
+                    <a href="#about" class="hover:text-brand">02. ABOUT_ME</a>
+                    <a href="#skills" class="hover:text-brand">03. CAPABILITIES</a>
+                    <a href="#projects" class="hover:text-brand">04. PROJECTS</a>
+                </div>
+
+                <!-- Right Side -->
+                <div class="flex items-center gap-4">
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/utsav-sharma-4766932a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank" class="text-xl text-gray-300 hover:text-[#0a66c2]">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/UtsavSha" target="_blank"
+                        class="text-xl text-gray-300 hover:text-brand">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-btn" class="md:hidden text-white text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                </div>
+
             </div>
-            <div class="flex gap-4 items-center">
-                <a href="https://www.linkedin.com/in/utsav-sharma-4766932a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                    target="_blank"
-                    class="text-xl text-gray-300 hover:text-[#0a66c2] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_10px_#0a66c2] interactive-el">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/UtsavSha" target="_blank"
-                    class="text-xl text-gray-300 hover:text-brand transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_10px_#00f2fe] interactive-el">
-                    <i class="fab fa-github"></i>
-                </a>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden flex flex-col mt-4 gap-3 text-center font-mono">
+
+                <a href="#hero" class="py-2">01. INITIATE</a>
+                <a href="#about" class="py-2">02. ABOUT_ME</a>
+                <a href="#skills" class="py-2">03. CAPABILITIES</a>
+                <a href="#projects" class="py-2">04. PROJECTS</a>
+
             </div>
+
         </nav>
 
         <!-- Section 1: Hero -->
@@ -527,6 +558,22 @@
 
     <!-- Core Interactive Logic -->
     <script>
+
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        // Close menu after clicking a link
+        document.querySelectorAll("#mobile-menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+            });
+        });
+
+
         gsap.registerPlugin(ScrollTrigger);
 
         // --- CUSTOM CURSOR LOGIC ---
