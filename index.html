@@ -191,6 +191,48 @@
         button {
             cursor: none !important;
         }
+
+        #contact .glass-panel {
+            transition: all .35s ease;
+        }
+
+        #contact .glass-panel:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 35px rgba(0, 242, 254, .25);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 100%;
+        }
+
+        #projects-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        #projects-slider {
+            scrollbar-width: none;
+        }
+
+        #resume-card iframe {
+            transform: scale(.82);
+            transform-origin: top left;
+
+            width: 122%;
+            height: 122%;
+
+            border: none;
+        }
+
+        #resume-card {
+            perspective: 1200px;
+        }
+
+        #resume-card:hover {
+            transform: rotateY(-6deg) rotateX(4deg) scale(1.05);
+        }
     </style>
 </head>
 
@@ -222,6 +264,8 @@
                     <a href="#about" class="hover:text-brand">02. ABOUT_ME</a>
                     <a href="#skills" class="hover:text-brand">03. CAPABILITIES</a>
                     <a href="#projects" class="hover:text-brand">04. PROJECTS</a>
+                    <a href="#resume">05. RESUME</a>
+                    <a href="#contact">06. CONTACT</a>
                 </div>
 
                 <!-- Right Side -->
@@ -255,6 +299,8 @@
                 <a href="#about" class="py-2">02. ABOUT_ME</a>
                 <a href="#skills" class="py-2">03. CAPABILITIES</a>
                 <a href="#projects" class="py-2">04. PROJECTS</a>
+                <a href="#resume">05. RESUME</a>
+                <a href="#contact">06. CONTACT</a>
 
             </div>
 
@@ -292,11 +338,8 @@
                 data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.5">
                 <div
                     class="w-48 h-48 md:w-72 md:h-72 rounded-full relative bg-gradient-to-br from-brand to-purple-600 p-1 avatar-glow transform-gpu">
-                    <div
-                        class="w-full h-full rounded-full bg-dark flex items-center justify-center overflow-hidden border-4 border-dark">
-                        <!-- Lightweight API Placeholder for a 3D-styled Robot/Avatar -->
-                        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Utsav&colors=00f2fe&texture=circuits"
-                            alt="Virtual Avatar" class="w-[80%] h-[80%] object-contain drop-shadow-2xl" />
+                    <div class="w-full h-full rounded-full overflow-hidden flex items-center justify-center">
+                        <img src="Boy.jpeg" class="avatar" alt="Avatar">
                     </div>
                 </div>
             </div>
@@ -417,135 +460,259 @@
         </section>
 
         <!-- Section 4: Projects -->
-        <section id="projects" class="flex-col justify-center items-start py-20 pointer-events-none">
+        <section id="projects" class="flex-col justify-center items-start py-20">
             <h2 class="text-5xl font-black mb-12 pointer-events-auto"><span class="text-brand">04.</span> PROJECTS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full pointer-events-auto px-4">
+            <div class="relative w-full overflow-visible">
 
-                <!-- Project: Movie Recommender -->
-                <div class="glass-panel p-6 flex flex-col interactive-el" data-tilt data-tilt-glare
-                    data-tilt-max-glare="0.2" data-tilt-scale="1.05">
-                    <div
-                        class="h-40 w-full rounded-xl bg-gradient-to-br from-indigo-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
-                        <i
-                            class="fas fa-film text-5xl text-indigo-400 drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]"></i>
+                <!-- Left Button -->
+                <button id="prev"
+                    class="absolute -left-6 top-1/2 -translate-y-1/2 z-[100] w-12 h-12 rounded-full bg-slate-900/90 backdrop-blur border border-brand shadow-[0_0_20px_rgba(0,242,254,.35)] hover:bg-brand hover:text-black transition">
+                    ❮
+                </button>
+                <div id="projects-slider"
+                    class="flex overflow-x-auto overflow-y-hidden gap-8 scroll-smooth px-20 snap-x snap-mandatory">
+
+                    <!-- Paste all your project cards here -->
+                    <!-- Project: Automated Data Cleaner -->
+                    <div class="glass-panel p-6 flex flex-col flex-shrink-0 w-[350px] snap-center">
+                        <div
+                            class="h-40 w-full rounded-xl bg-gradient-to-br from-pink-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
+                            <i
+                                class="fas fa-broom text-5xl text-pink-400 drop-shadow-[0_0_15px_rgba(244,114,182,0.5)]"></i>
+                        </div>
+                        <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-2 py-1 rounded bg-pink-500/20 text-pink-300">Data Engineering</span>
+                            <span class="px-2 py-1 rounded bg-pink-500/20 text-pink-300">Pandas</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Automated Data Pipeline</h3>
+                        <p class="text-gray-300 text-sm mb-6 flex-grow">Designed a robust script that autonomously
+                            detects
+                            anomalies, imputes values, and normalizes unstructured data.</p>
+                        <a href="https://github.com/UtsavSha/Automated-Data-Cleaner" target="_blank"
+                            class="card-link inline-flex items-center text-pink-400 font-bold hover:text-pink-300 hover:drop-shadow-[0_0_10px_#f472b6] transition-all mt-auto">
+                            View GitHub Repo <i class="fab fa-github ml-2 text-sm"></i>
+                        </a>
                     </div>
-                    <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
-                        <span class="px-2 py-1 rounded bg-indigo-500/20 text-indigo-300">ML</span>
-                        <span class="px-2 py-1 rounded bg-indigo-500/20 text-indigo-300">Streamlit</span>
+
+                    <!-- Project: Dogs vs Cats Classifier -->
+                    <div class="glass-panel p-6 flex flex-col flex-shrink-0 w-[350px] snap-center">
+                        <div
+                            class="h-40 w-full rounded-xl bg-gradient-to-br from-emerald-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
+                            <i
+                                class="fas fa-cat text-5xl text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]"></i>
+                        </div>
+                        <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300">Deep Learning</span>
+                            <span class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300">CNN</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">CNN Pet Classifier</h3>
+                        <p class="text-gray-300 text-sm mb-6 flex-grow">Trained a Convolutional Neural Network using
+                            TensorFlow/Keras to perform highly accurate image classification.</p>
+                        <a href="https://github.com/UtsavSha/Dogs-vs-Cats-Classifier" target="_blank"
+                            class="card-link inline-flex items-center text-emerald-400 font-bold hover:text-emerald-300 hover:drop-shadow-[0_0_10px_#34d399] transition-all mt-auto">
+                            View GitHub Repo <i class="fab fa-github ml-2 text-sm"></i>
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Movie Recommender</h3>
-                    <p class="text-gray-300 text-sm mb-6 flex-grow">Machine learning recommendation engine with rigorous
-                        data cleaning and interactive web deployment.</p>
-                    <a href="https://movierecommendersystem-1-b477.onrender.com" target="_blank"
-                        class="card-link inline-flex items-center text-indigo-400 font-bold hover:text-indigo-300 hover:drop-shadow-[0_0_10px_#818cf8] transition-all mt-auto">
-                        View Live App <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                    </a>
+
+                    <!-- Project: Movie Recommender -->
+                    <div class="glass-panel p-6 flex flex-col flex-shrink-0 w-[350px] snap-center">
+                        <div
+                            class="h-40 w-full rounded-xl bg-gradient-to-br from-indigo-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
+                            <i
+                                class="fas fa-film text-5xl text-indigo-400 drop-shadow-[0_0_15px_rgba(129,140,248,0.5)]"></i>
+                        </div>
+                        <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-2 py-1 rounded bg-indigo-500/20 text-indigo-300">ML</span>
+                            <span class="px-2 py-1 rounded bg-indigo-500/20 text-indigo-300">Streamlit</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Movie Recommender</h3>
+                        <p class="text-gray-300 text-sm mb-6 flex-grow">Machine learning recommendation engine with
+                            rigorous
+                            data cleaning and interactive web deployment.</p>
+                        <a href="https://movierecommendersystem-1-b477.onrender.com" target="_blank"
+                            class="card-link inline-flex items-center text-indigo-400 font-bold hover:text-indigo-300 hover:drop-shadow-[0_0_10px_#818cf8] transition-all mt-auto">
+                            View Live App <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project: SMS Spam Detector -->
+                    <div class="glass-panel p-6 flex flex-col flex-shrink-0 w-[350px] snap-center">
+                        <div
+                            class="h-40 w-full rounded-xl bg-gradient-to-br from-orange-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
+                            <i
+                                class="fas fa-shield-halved text-5xl text-orange-400 drop-shadow-[0_0_15px_rgba(251,146,60,0.5)]"></i>
+                        </div>
+                        <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">NLP</span>
+                            <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">Classification</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Spam Detector</h3>
+                        <p class="text-gray-300 text-sm mb-6 flex-grow">Engineered an NLP model utilizing extensive text
+                            preprocessing to accurately classify communications.</p>
+                        <a href="https://sms-spam-detector-ot13.onrender.com" target="_blank"
+                            class="card-link inline-flex items-center text-orange-400 font-bold hover:text-orange-300 hover:drop-shadow-[0_0_10px_#fb923c] transition-all mt-auto">
+                            View Live App <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project: Jarvis AI -->
+                    <div class="glass-panel p-6 flex flex-col flex-shrink-0 w-[350px] snap-center">
+                        <div
+                            class="h-40 w-full rounded-xl bg-gradient-to-br from-cyan-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
+                            <i
+                                class="fas fa-microphone-lines text-5xl text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"></i>
+                        </div>
+                        <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">Python</span>
+                            <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">Voice AI</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">AI Virtual Assistant</h3>
+                        <p class="text-gray-300 text-sm mb-6 flex-grow">Developed a voice-activated virtual assistant
+                            powered by Artificial Neural Networks to automate OS tasks.</p>
+                        <a href="https://github.com/UtsavSha/jarvis" target="_blank"
+                            class="card-link inline-flex items-center text-cyan-400 font-bold hover:text-cyan-300 hover:drop-shadow-[0_0_10px_#22d3ee] transition-all mt-auto">
+                            View GitHub Repo <i class="fab fa-github ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project: E-Commerce Analytics -->
+                    <div class="glass-panel p-6 flex flex-col flex-shrink-0 w-[350px] snap-center">
+                        <div
+                            class="h-40 w-full rounded-xl bg-gradient-to-br from-violet-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
+                            <i
+                                class="fas fa-chart-line text-5xl text-violet-400 drop-shadow-[0_0_15px_rgba(167,139,250,0.5)]"></i>
+                        </div>
+                        <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
+                            <span class="px-2 py-1 rounded bg-violet-500/20 text-violet-300">Analytics</span>
+                            <span class="px-2 py-1 rounded bg-violet-500/20 text-violet-300">Data Viz</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">E-Commerce Analysis</h3>
+                        <p class="text-gray-300 text-sm mb-6 flex-grow">Interactive visualization analyzing e-commerce
+                            sales
+                            trends, customer behavior, and regional KPIs.</p>
+                        <a href="https://github.com/UtsavSha/Ecommerce_analysis" target="_blank"
+                            class="card-link inline-flex items-center text-violet-400 font-bold hover:text-violet-300 hover:drop-shadow-[0_0_10px_#a78bfa] transition-all mt-auto">
+                            View Analytics Repo <i class="fab fa-github ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
+
+
+
+
                 </div>
 
-                <!-- Project: SMS Spam Detector -->
-                <div class="glass-panel p-6 flex flex-col interactive-el" data-tilt data-tilt-glare
-                    data-tilt-max-glare="0.2" data-tilt-scale="1.05">
-                    <div
-                        class="h-40 w-full rounded-xl bg-gradient-to-br from-orange-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
-                        <i
-                            class="fas fa-shield-halved text-5xl text-orange-400 drop-shadow-[0_0_15px_rgba(251,146,60,0.5)]"></i>
-                    </div>
-                    <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
-                        <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">NLP</span>
-                        <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">Classification</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Spam Detector</h3>
-                    <p class="text-gray-300 text-sm mb-6 flex-grow">Engineered an NLP model utilizing extensive text
-                        preprocessing to accurately classify communications.</p>
-                    <a href="https://sms-spam-detector-ot13.onrender.com" target="_blank"
-                        class="card-link inline-flex items-center text-orange-400 font-bold hover:text-orange-300 hover:drop-shadow-[0_0_10px_#fb923c] transition-all mt-auto">
-                        View Live App <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                    </a>
-                </div>
+                <!-- Right Button -->
+                <button id="next"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-slate-900/80 backdrop-blur border border-brand hover:bg-brand hover:text-black transition">
+                    ❯
+                </button>
 
-                <!-- Project: Jarvis AI -->
-                <div class="glass-panel p-6 flex flex-col interactive-el" data-tilt data-tilt-glare
-                    data-tilt-max-glare="0.2" data-tilt-scale="1.05">
-                    <div
-                        class="h-40 w-full rounded-xl bg-gradient-to-br from-cyan-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
-                        <i
-                            class="fas fa-microphone-lines text-5xl text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"></i>
-                    </div>
-                    <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
-                        <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">Python</span>
-                        <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">Voice AI</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Jarvis AI Agent</h3>
-                    <p class="text-gray-300 text-sm mb-6 flex-grow">Developed a voice-activated virtual assistant
-                        powered by Artificial Neural Networks to automate OS tasks.</p>
-                    <a href="https://github.com/UtsavSha/jarvis" target="_blank"
-                        class="card-link inline-flex items-center text-cyan-400 font-bold hover:text-cyan-300 hover:drop-shadow-[0_0_10px_#22d3ee] transition-all mt-auto">
-                        View GitHub Repo <i class="fab fa-github ml-2 text-sm"></i>
-                    </a>
-                </div>
 
-                <!-- Project: E-Commerce Analytics -->
-                <div class="glass-panel p-6 flex flex-col interactive-el" data-tilt data-tilt-glare
-                    data-tilt-max-glare="0.2" data-tilt-scale="1.05">
-                    <div
-                        class="h-40 w-full rounded-xl bg-gradient-to-br from-violet-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
-                        <i
-                            class="fas fa-chart-line text-5xl text-violet-400 drop-shadow-[0_0_15px_rgba(167,139,250,0.5)]"></i>
-                    </div>
-                    <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
-                        <span class="px-2 py-1 rounded bg-violet-500/20 text-violet-300">Analytics</span>
-                        <span class="px-2 py-1 rounded bg-violet-500/20 text-violet-300">Data Viz</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">E-Commerce Analysis</h3>
-                    <p class="text-gray-300 text-sm mb-6 flex-grow">Interactive visualization analyzing e-commerce sales
-                        trends, customer behavior, and regional KPIs.</p>
-                    <a href="https://github.com/UtsavSha/Ecommerce_analysis" target="_blank"
-                        class="card-link inline-flex items-center text-violet-400 font-bold hover:text-violet-300 hover:drop-shadow-[0_0_10px_#a78bfa] transition-all mt-auto">
-                        View Analytics Repo <i class="fab fa-github ml-2 text-sm"></i>
-                    </a>
-                </div>
+            </div>
 
-                <!-- Project: Dogs vs Cats Classifier -->
-                <div class="glass-panel p-6 flex flex-col interactive-el" data-tilt data-tilt-glare
-                    data-tilt-max-glare="0.2" data-tilt-scale="1.05">
-                    <div
-                        class="h-40 w-full rounded-xl bg-gradient-to-br from-emerald-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
-                        <i class="fas fa-cat text-5xl text-emerald-400 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]"></i>
-                    </div>
-                    <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
-                        <span class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300">Deep Learning</span>
-                        <span class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300">CNN</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">CNN Pet Classifier</h3>
-                    <p class="text-gray-300 text-sm mb-6 flex-grow">Trained a Convolutional Neural Network using
-                        TensorFlow/Keras to perform highly accurate image classification.</p>
-                    <a href="https://github.com/UtsavSha/Dogs-vs-Cats-Classifier" target="_blank"
-                        class="card-link inline-flex items-center text-emerald-400 font-bold hover:text-emerald-300 hover:drop-shadow-[0_0_10px_#34d399] transition-all mt-auto">
-                        View GitHub Repo <i class="fab fa-github ml-2 text-sm"></i>
-                    </a>
-                </div>
+        </section>
 
-                <!-- Project: Automated Data Cleaner -->
-                <div class="glass-panel p-6 flex flex-col interactive-el" data-tilt data-tilt-glare
-                    data-tilt-max-glare="0.2" data-tilt-scale="1.05">
-                    <div
-                        class="h-40 w-full rounded-xl bg-gradient-to-br from-pink-900 to-black mb-6 flex items-center justify-center relative overflow-hidden">
-                        <i class="fas fa-broom text-5xl text-pink-400 drop-shadow-[0_0_15px_rgba(244,114,182,0.5)]"></i>
+        <section id="resume" class="py-24">
+
+            <div class="max-w-6xl mx-auto px-6">
+
+                <h2 class="text-5xl font-black mb-6">
+                    <span class="text-brand">05.</span> Resume
+                </h2>
+
+                <p class="text-gray-300 mb-10 max-w-3xl">
+                    Explore my technical skills, projects, certifications,
+                    education and experience in an interactive resume viewer.
+                </p>
+
+                <!-- Resume Card -->
+                <div id="resume-card"
+                    class="glass-panel max-w-sm mx-auto p-6 cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-[0_0_35px_rgba(0,242,254,.35)]">
+
+                    <div class="bg-white rounded-lg h-[420px] overflow-hidden shadow-lg">
+
+                        <iframe src="resume.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                            class="w-full h-full pointer-events-none">
+                        </iframe>
+
                     </div>
-                    <div class="flex gap-2 mb-3 font-mono text-[10px] uppercase tracking-wider">
-                        <span class="px-2 py-1 rounded bg-pink-500/20 text-pink-300">Data Engineering</span>
-                        <span class="px-2 py-1 rounded bg-pink-500/20 text-pink-300">Pandas</span>
+
+                    <div class="mt-6 text-center">
+
+                        <h3 class="text-2xl font-bold">
+                            Resume Preview
+                        </h3>
+
+                        <p class="text-gray-400 mt-2">
+                            Click to open full-screen
+                        </p>
+
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Automated Data Pipeline</h3>
-                    <p class="text-gray-300 text-sm mb-6 flex-grow">Designed a robust script that autonomously detects
-                        anomalies, imputes values, and normalizes unstructured data.</p>
-                    <a href="https://github.com/UtsavSha/Automated-Data-Cleaner" target="_blank"
-                        class="card-link inline-flex items-center text-pink-400 font-bold hover:text-pink-300 hover:drop-shadow-[0_0_10px_#f472b6] transition-all mt-auto">
-                        View GitHub Repo <i class="fab fa-github ml-2 text-sm"></i>
-                    </a>
+
                 </div>
 
             </div>
+
+        </section>
+
+        <div id="resume-modal"
+            class="fixed inset-0 bg-black/90 backdrop-blur-lg hidden items-center justify-center z-[9999] p-6">
+
+            <!-- Close -->
+            <button id="close-resume" class="absolute top-6 right-8 text-4xl text-white hover:text-brand transition">
+                &times;
+            </button>
+
+            <!-- PDF -->
+
+            <div class="w-full max-w-6xl h-[92vh] rounded-2xl overflow-hidden shadow-2xl border border-brand">
+
+                <iframe src="resume.pdf" class="w-full h-full bg-white">
+                </iframe>
+
+            </div>
+
+        </div>
+
+        <section id="contact" class="py-24 flex justify-center items-center">
+
+            <div class="glass-panel p-10 max-w-3xl w-full text-center">
+
+                <h2 class="text-5xl font-black mb-6">
+                    <span class="text-brand">05.</span>
+                    Contact Me
+                </h2>
+
+                <p class="text-gray-300 mb-10">
+                    Interested in collaborating on AI, Machine Learning or Data Science projects?
+                    Let's connect.
+                </p>
+
+                <div class="space-y-6">
+
+                    <a href="mailto:yourmail@gmail.com"
+                        class="flex justify-center items-center gap-4 text-xl hover:text-brand transition">
+
+                        <i class="fas fa-envelope text-brand"></i>
+
+                        utsavsharma749@gmail.com
+
+                    </a>
+
+                    <a href="tel:+919876543210"
+                        class="flex justify-center items-center gap-4 text-xl hover:text-brand transition">
+
+                        <i class="fas fa-phone text-brand"></i>
+
+                        +91 7398679935
+
+                    </a>
+
+                </div>
+
+            </div>
+
         </section>
 
         <!-- Footer -->
@@ -555,6 +722,7 @@
 
         </footer>
     </main>
+
 
     <!-- Core Interactive Logic -->
     <script>
@@ -635,7 +803,7 @@
         const particleMat = new THREE.MeshBasicMaterial({ color: 0x00f2fe });
 
         const particles = [];
-        for (let i = 0; i < 250; i++) {
+        for (let i = 0; i < 50; i++) {
             const mesh = new THREE.Mesh(particleGeo, particleMat);
             const theta = Math.random() * Math.PI * 2;
             const phi = Math.acos((Math.random() * 2) - 1);
@@ -658,7 +826,7 @@
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0x00f2fe, 2, 50);
+        const pointLight = new THREE.PointLight(0x00f2fe, 0.8, 35);
         pointLight.position.set(0, 0, 0);
         scene.add(pointLight);
 
@@ -715,9 +883,9 @@
         const tick = () => {
             const elapsedTime = clock.getElapsedTime();
 
-            core.rotation.y += 0.005;
-            core.rotation.x += 0.002;
-            innerCore.rotation.y -= 0.01;
+            core.rotation.y += 0.0015;
+            core.rotation.x += 0.0008;
+            innerCore.rotation.y -= 0.003;
             innerCore.rotation.z -= 0.005;
 
             particles.forEach((p, index) => {
@@ -741,6 +909,58 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        const slider = document.getElementById("projects-slider");
+
+        document.getElementById("next").onclick = () => {
+            slider.scrollBy({
+                left: 380,
+                behavior: "smooth"
+            });
+        };
+
+        document.getElementById("prev").onclick = () => {
+            slider.scrollBy({
+                left: -380,
+                behavior: "smooth"
+            });
+        };
+
+        const resumeCard = document.getElementById("resume-card");
+        const resumeModal = document.getElementById("resume-modal");
+        const closeResume = document.getElementById("close-resume");
+
+        resumeCard.addEventListener("click", () => {
+
+            resumeModal.classList.remove("hidden");
+            resumeModal.classList.add("flex");
+
+            document.body.style.overflow = "hidden";
+
+        });
+
+        closeResume.addEventListener("click", () => {
+
+            resumeModal.classList.remove("flex");
+            resumeModal.classList.add("hidden");
+
+            document.body.style.overflow = "auto";
+
+        });
+
+        // Close on background click
+        resumeModal.addEventListener("click", (e) => {
+
+            if (e.target === resumeModal) {
+
+                resumeModal.classList.remove("flex");
+                resumeModal.classList.add("hidden");
+
+                document.body.style.overflow = "auto";
+
+            }
+
         });
     </script>
 </body>
